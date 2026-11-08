@@ -1,5 +1,5 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyB1aJBgOGB7lUYZeJ5f9PTzGsrGHDi01lA",
   authDomain: "ncp-aio-lab-mock-exam.firebaseapp.com",
   projectId: "ncp-aio-lab-mock-exam",
