@@ -2,3 +2,27 @@
 
 /* Guided lab checklist */
 .lab-checklist{margin-top:14px}.checklist{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}.checklist li{display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:10px;border:1px solid #31465f}.checklist li.current{border-color:#3dd4b0;background:rgba(61,212,176,.08)}.checklist li.done{opacity:.8}.checklist li.pending{opacity:.65}.checklist small{display:block;margin-top:4px;color:#a7b6c8;line-height:1.4}.checkmark{font-size:19px;min-width:23px;color:#3dd4b0}.checklist li.pending .checkmark{color:#8da2b7}
+
+/* v5: compact, no-page-scroll guided workspace */
+body:has(.lab-workspace){height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+body:has(.lab-workspace) header,body:has(.lab-workspace) nav,body:has(.lab-workspace) footer{flex-shrink:0}
+body:has(.lab-workspace) footer{display:none}
+body:has(.lab-workspace) main{flex:1;min-height:0;width:100%;max-width:1500px;padding:12px 18px;overflow:hidden}
+.lab-workspace{height:100%;min-height:0;display:flex;flex-direction:column;gap:10px}
+.workspace-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-shrink:0}
+.workspace-head h1{font-size:20px;margin:0}.workspace-head p{font-size:12px;margin:2px 0;color:#9fb5cc}
+.workspace-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(285px,.85fr) minmax(0,1.4fr);gap:12px}
+.workspace-grid>.terminal-panel:only-child{grid-column:1/-1}
+.lab-panel,.terminal-panel{background:#142238;border:1px solid #304760;border-radius:14px;min-width:0;min-height:0;overflow:hidden}
+.lab-panel{display:flex;flex-direction:column;padding:14px;gap:10px}
+.lab-panel-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.lab-panel-top h2{margin:4px 0 0;font-size:17px;line-height:1.25}
+.eyebrow{color:#6ed8bb;font-size:10px;font-weight:800;letter-spacing:.08em}
+.lab-meter{display:flex;justify-content:space-between;color:#c0d0df;font-size:12px}
+.objective-box{background:#1d3446;border:1px solid #367b75;border-radius:11px;padding:13px}.objective-box p{color:#f0f5ff;font-size:15px;font-weight:600;margin:8px 0 12px;line-height:1.4}
+.objective-actions{display:flex;gap:8px;flex-wrap:wrap}.button.tiny{padding:7px 10px;font-size:12px}
+.checklist-details{min-height:0;overflow:auto;border:1px solid #304760;border-radius:10px}.checklist-details summary{cursor:pointer;list-style:none;padding:12px;color:#d6e5f4;font-weight:700;font-size:13px;display:flex;justify-content:space-between}.checklist-details summary::-webkit-details-marker{display:none}.checklist-details[open]{flex:1}.checklist-details .checklist{padding:0 9px 9px;margin:0;gap:5px}.checklist-details .checklist li{padding:8px;font-size:12px}.checklist-details .checklist small{font-size:11px}
+.lab-feedback{color:#9cf0cf;background:#143c37;padding:9px;border-radius:8px;font-size:12px;line-height:1.35}
+.terminal-panel{display:flex;flex-direction:column;background:#070e19}.terminal-panel .terminalbar{padding:10px 12px;flex-shrink:0;gap:8px;font-size:12px}.terminal-panel .output{height:auto;flex:1;min-height:0;overflow-y:auto;font-size:13px;line-height:1.55;padding:12px}.terminal-panel .cmdline{flex-shrink:0}.terminal-panel .terminal-shortcuts{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid #27384e;flex-shrink:0}.terminal-shortcuts button{background:#1a3047;border:1px solid #36506c;border-radius:8px;padding:7px 10px;color:#d9e9f6;font:inherit;font-size:12px;cursor:pointer}
+@media(min-width:800px){.checklist-details{flex:1}.checklist-details:not([open]){flex:0 0 auto}}
+@media(max-width:799px){header{padding:7px 12px}.logo{font-size:24px}.brand strong{font-size:15px}.brand small{font-size:8px}nav{padding:6px 8px;gap:4px}nav button{padding:8px 10px;font-size:11px}body:has(.lab-workspace) main{padding:7px;}.workspace-head{padding:0 4px}.workspace-head h1{font-size:16px}.workspace-head p{display:none}.workspace-grid{display:flex;flex-direction:column;gap:7px}.lab-panel{flex:0 0 auto;padding:9px;gap:6px}.lab-panel-top h2{font-size:13px;margin-top:1px}.lab-panel-top .button{padding:5px 8px}.lab-meter{font-size:10px}.lab-panel .progress{height:5px}.objective-box{padding:9px}.objective-box p{font-size:13px;margin:4px 0 7px}.objective-actions .button{padding:6px 9px;font-size:11px}.checklist-details{max-height:110px;flex:none!important}.checklist-details summary{padding:7px 9px;font-size:11px}.checklist-details .checklist li{padding:5px}.lab-feedback{padding:5px 8px;font-size:11px}.terminal-panel{flex:1;min-height:130px}.terminal-panel .output{font-size:11px;padding:9px}.terminal-panel .terminalbar{padding:6px 9px;font-size:10px}.terminal-panel .cmdline{padding:5px 7px}.terminal-panel .cmdline input{font-size:16px}.terminal-panel .terminal-shortcuts{padding:5px 8px}.terminal-panel .terminal-shortcuts button{padding:5px 7px;font-size:11px}}
+@media(max-height:670px) and (max-width:799px){.lab-panel-top .eyebrow,.lab-meter,.lab-panel .progress,.lab-feedback{display:none}.checklist-details:not([open]){max-height:32px}.objective-box p{margin:2px 0 5px}.workspace-head{display:none}}
