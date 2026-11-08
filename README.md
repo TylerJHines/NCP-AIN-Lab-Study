@@ -17,3 +17,6 @@ This is a synthetic training simulation, not the real exam environment. Some rep
 
 ## Deploy
 Unzip and upload **all 7 files** into the root of your GitHub Pages repository, including app.js, style.css, sw.js and index.html. Commit changes, wait for Pages to finish, then hard-refresh. The cache version is v7 to help invalidate prior PWA assets.
+
+## v8 hint penalties
+Mock exam lab hints now deduct 50% of the current step for the first hint, 75% cumulative for the second, and 100% cumulative for the third or later. Each step is weighted equally within its lab, so penalties automatically scale with the lab's number of steps. This is a custom practice scoring policy, not a published NVIDIA grading rule. Normal guided practice remains unpenalized.
