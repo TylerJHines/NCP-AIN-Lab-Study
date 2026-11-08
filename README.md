@@ -1,24 +1,19 @@
-# ClusterForge v6 — Expanded AI Operations Labs
+# ClusterForge v7 — NCP-AIO Mock Exam
 
-An original browser-based **training simulation**, not an NVIDIA exam replica or live BCM/Slurm/Kubernetes cluster.
+Original, offline-capable, browser-based practice application. Not affiliated with NVIDIA.
 
-## Contents
-- 15 guided labs (3 original plus 12 expanded) with scenario checklist, `hint`, and command feedback.
-- Slurm: drained node, GPU resource shortage, partition error, GRES mismatch, daemon unavailable.
-- Kubernetes: image pull, taint scheduling, CrashLoopBackOff, GPU device plugin, NotReady node.
-- BCM: node provisioning, incorrect software image, incorrect node category.
-- GPU: Xid error triage and safe node isolation.
-- Linux/storage: full shared storage.
-- Command academy and existing 12-question starter quiz.
+## New mock exam
+- 30 randomly selected, shuffled multiple-choice questions from 78 original items.
+- Domain mix: 9 Installation & Deployment, 7 Administration, 7 Workload Management, 7 Troubleshooting & Optimization.
+- Weighted question score: 31% / 23% / 23% / 23% (official NVIDIA domain weights).
+- Three random labs: one Slurm, one Kubernetes, one BCM, drawn from 13 eligible scenarios. The 2 additional GPU/storage labs remain available in standalone practice.
+- Shared 120-minute timer; questions and labs contribute 50% each.
+- Equal weight for each of three labs. Each verified checklist step earns 1 point; using `hint` once or repeatedly on that step deducts 10% of the step's maximum points. Incomplete steps earn zero. The lab score is the average of the three lab percentages.
+- Overall score = 0.5 * weighted question score + 0.5 * average lab score. 70% is a **user-chosen practice benchmark**, not an NVIDIA-published passing cut score.
+- Saved in localStorage per browser. Does not synchronize across devices. The timer continues after refreshing the page.
 
 ## Limitations
-The simulator recognizes only a documented subset of commands. `simctl` commands are **training-only shortcuts** and must not be confused with actual NVIDIA/Slurm/Kubernetes commands. Real environments require version-specific procedures and operator authorization. Some scenarios intentionally use simplified states and exact command progression. These labs are representative preparation exercises, not confirmed exam content. Full four 30-question exams are not yet included.
+This is a synthetic training simulation, not the real exam environment. Some repairs use simulator-only `simctl` commands and are not valid production commands. Lab steps are command-sequence graded, not fully outcome-based. The exam questions are original practice questions, not leaked exam items. The 50/50 exam section weighting, 30 questions, three labs and 120-minute duration are published by NVIDIA; hint penalties and the 70% pass threshold are custom training rules.
 
 ## Deploy
-Upload all files in this folder to the root of your GitHub Pages repository, replacing the old files. Settings > Pages > Deploy from a branch > main > /(root).
-
-## Local run
-From this folder, run `python -m http.server 8080` then open `http://localhost:8080`.
-
-## Test
-`node --check app.js` checks JavaScript syntax. Functional browser testing is recommended before publishing widely.
+Unzip and upload **all 7 files** into the root of your GitHub Pages repository, including app.js, style.css, sw.js and index.html. Commit changes, wait for Pages to finish, then hard-refresh. The cache version is v7 to help invalidate prior PWA assets.
