@@ -20,3 +20,12 @@ Unzip and upload **all 7 files** into the root of your GitHub Pages repository, 
 
 ## v8 hint penalties
 Mock exam lab hints now deduct 50% of the current step for the first hint, 75% cumulative for the second, and 100% cumulative for the third or later. Each step is weighted equally within its lab, so penalties automatically scale with the lab's number of steps. This is a custom practice scoring policy, not a published NVIDIA grading rule. Normal guided practice remains unpenalized.
+
+## v9 verified mock-exam hint penalties
+- First `hint` on a step: **50%** of that step's credit forfeited.
+- Second `hint` on the same step: **75% total** forfeited.
+- Third and subsequent hints: **100%** forfeited.
+- No penalty for hints in guided practice.
+- Each step contributes 1/N of its lab score; three labs share the 50% hands-on section equally.
+- The mock exam now uses a v9 local-storage key to avoid resuming older attempts with incompatible hint records.
+- These are original training rules, **not published NVIDIA scoring rules**.
