@@ -1,1 +1,18 @@
-{"name":"ClusterForge AI Operations Simulator","short_name":"ClusterForge","description":"Original NCP-AIO practice labs and command academy","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#0b1220","theme_color":"#101d31","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "Tyler's NCP-AIO Practice Sim and Mock Exam",
+  "short_name": "Tyler's NCP-AIO",
+  "description": "NCP-AIO practice simulator and mock exam",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#101d31",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

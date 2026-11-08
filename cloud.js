@@ -3,10 +3,12 @@ const banner=document.getElementById('cloud-status');
 const login=document.getElementById('cloud-login');
 const logout=document.getElementById('cloud-logout');
 const ready=Boolean(firebaseConfig.apiKey&&firebaseConfig.authDomain&&firebaseConfig.projectId&&firebaseConfig.appId);
+if(login){login.disabled=true;login.title='Initializing Google sign-in…';}
+function friendlyError(e){const code=e?.code||'';if(code==='auth/unauthorized-domain')return 'This website is not authorized. Firebase Console → Authentication → Settings → Authorized domains: add yourusername.github.io (no https:// or path).';if(code==='auth/operation-not-allowed')return 'Enable Google under Firebase Authentication → Sign-in method.';if(code==='auth/popup-blocked')return 'Popup blocked. Allow popups for this site, or open the website in Safari/Chrome (not a Home Screen app).';if(code==='auth/popup-closed-by-user')return 'Google sign-in window closed before completion. Try again.';if(code==='auth/cancelled-popup-request')return 'Sign-in request cancelled. Try again.';if(code==='auth/network-request-failed')return 'Network error. Check internet and any browser extensions blocking Google or Firebase.';return (code?code+': ':'')+(e?.message||String(e))}
 const api={user:null,saveLab:()=>{},saveExam:()=>{}};
 window.CFCloud=api;
 function status(msg){if(banner)banner.textContent=msg}
-if(!ready){status('Guest mode · Configure Firebase to enable Google sign-in');login.disabled=true;login.title='Add Firebase web configuration first';}
+if(!ready){status('Google sign-in needs Firebase configuration. Edit firebase-config.js with your web app settings.');login.disabled=true;login.title='Firebase configuration missing: edit firebase-config.js';}
 else{
   try{
     const [{initializeApp},{getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged,setPersistence,browserLocalPersistence},{getFirestore,doc,getDoc,setDoc,collection,addDoc,query,getDocs,orderBy,limit}]=await Promise.all([
@@ -15,6 +17,7 @@ else{
       import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')]);
     const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
     await setPersistence(auth,browserLocalPersistence);
+    login.disabled=false;login.title='Sign in with your Google account';status('Guest mode · Google sign-in ready');
     let busy=false;
     const profileRef=uid=>doc(db,'users',uid,'profile','progress');
     const examRef=(uid,id)=>doc(db,'users',uid,'exams',id);
@@ -25,7 +28,7 @@ else{
     };
     api.saveLab=async record=>{if(!api.user||busy)return;try{await setDoc(labRef(api.user.uid,record.labId),record);await cloudSave(api.user.uid,window.CFApp.localSnapshot());status('Signed in · Lab completion synced')}catch(e){status('Cloud save failed: '+e.message)}};
     api.saveExam=async record=>{if(!api.user||busy)return;try{await setDoc(examRef(api.user.uid,record.id),record);status('Signed in · Exam saved to cloud')}catch(e){status('Cloud save failed: '+e.message)}};
-    login.addEventListener('click',async()=>{try{status('Opening Google sign-in…');await signInWithPopup(auth,new GoogleAuthProvider())}catch(e){status('Sign-in failed: '+e.message)}});
+    login.addEventListener('click',()=>{status('Opening Google sign-in…');signInWithPopup(auth,new GoogleAuthProvider()).catch(e=>status('Sign-in failed: '+friendlyError(e)))});
     logout.addEventListener('click',async()=>{try{await signOut(auth)}catch(e){status('Sign-out failed: '+e.message)}});
     onAuthStateChanged(auth,async user=>{
       login.hidden=Boolean(user);logout.hidden=!user;api.user=user;
@@ -52,5 +55,5 @@ else{
         status('Signed in as '+(user.displayName||user.email)+' · Progress synced');
       }catch(e){status('Signed in, but sync failed: '+e.message)}finally{busy=false;window.CFApp?.render()}
     });
-  }catch(e){status('Firebase initialization failed: '+e.message)}
+  }catch(e){login.disabled=true;login.title='Firebase could not initialize';status('Firebase initialization failed: '+friendlyError(e))}
 }
