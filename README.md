@@ -30,3 +30,10 @@ Host the contents of this directory on an HTTPS static host (such as GitHub Page
 ## Development
 
 Edit app.js for the simulator logic and questions, style.css for presentation. Change the cache name in sw.js when deploying updated versions to refresh offline assets.
+
+## Version 4: terminal hints and lab checklists
+- Start a lab from Guided Lab Simulator.
+- Every lab shows a persistent step-by-step checklist, including completed/current/upcoming tasks.
+- Type `hint` at any point in the terminal to see the next required command and why it is used.
+- The hint itself does not advance the lab; execute the command to check off the step.
+- The `hint` command also works inside the BCM `cmsh` shell.
