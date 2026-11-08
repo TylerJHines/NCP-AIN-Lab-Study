@@ -1,39 +1,24 @@
-# ClusterForge v1
+# ClusterForge v6 — Expanded AI Operations Labs
 
-Original, educational, simulated AI infrastructure operations PWA. Not affiliated with NVIDIA. No actual systems are accessed.
+An original browser-based **training simulation**, not an NVIDIA exam replica or live BCM/Slurm/Kubernetes cluster.
 
-## Run locally
+## Contents
+- 15 guided labs (3 original plus 12 expanded) with scenario checklist, `hint`, and command feedback.
+- Slurm: drained node, GPU resource shortage, partition error, GRES mismatch, daemon unavailable.
+- Kubernetes: image pull, taint scheduling, CrashLoopBackOff, GPU device plugin, NotReady node.
+- BCM: node provisioning, incorrect software image, incorrect node category.
+- GPU: Xid error triage and safe node isolation.
+- Linux/storage: full shared storage.
+- Command academy and existing 12-question starter quiz.
 
-From this folder, run `python -m http.server 8080`, then open `http://localhost:8080` in your browser. Python 3 is required. Avoid opening index.html via file:// because service workers require HTTP localhost or HTTPS.
+## Limitations
+The simulator recognizes only a documented subset of commands. `simctl` commands are **training-only shortcuts** and must not be confused with actual NVIDIA/Slurm/Kubernetes commands. Real environments require version-specific procedures and operator authorization. Some scenarios intentionally use simplified states and exact command progression. These labs are representative preparation exercises, not confirmed exam content. Full four 30-question exams are not yet included.
 
-## Install on iPhone
+## Deploy
+Upload all files in this folder to the root of your GitHub Pages repository, replacing the old files. Settings > Pages > Deploy from a branch > main > /(root).
 
-Host the contents of this directory on an HTTPS static host (such as GitHub Pages). In Safari, open the hosted URL, choose Share > Add to Home Screen. Android browsers can use Install app / Add to Home screen. PWA install behavior varies by browser and OS.
+## Local run
+From this folder, run `python -m http.server 8080` then open `http://localhost:8080`.
 
-## Features
-
-- Stateful simulated Slurm, Kubernetes, BCM cmsh and Linux command subsets
-- Three fault scenarios and command-driven recovery
-- Command academy with 25 entries
-- Starter question bank of 12 original questions (NOT yet four complete exams)
-- Local browser persistence and offline cached assets
-
-## Scope and limitations
-
-- BCM `provision NODE` is explicitly a *training shortcut*, not a literal production cmsh command.
-- The emulator implements a deliberately small subset of real command syntax and simplified scheduler behavior.
-- No real GPUs, Linux commands, clusters, or cloud services are accessed.
-- No account sync or server-side progress storage.
-- The four complete 30-question practice exams are a future milestone.
-- Do not treat simulated command output as authoritative production documentation.
-
-## Development
-
-Edit app.js for the simulator logic and questions, style.css for presentation. Change the cache name in sw.js when deploying updated versions to refresh offline assets.
-
-## Version 4: terminal hints and lab checklists
-- Start a lab from Guided Lab Simulator.
-- Every lab shows a persistent step-by-step checklist, including completed/current/upcoming tasks.
-- Type `hint` at any point in the terminal to see the next required command and why it is used.
-- The hint itself does not advance the lab; execute the command to check off the step.
-- The `hint` command also works inside the BCM `cmsh` shell.
+## Test
+`node --check app.js` checks JavaScript syntax. Functional browser testing is recommended before publishing widely.
